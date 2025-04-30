@@ -82,7 +82,7 @@ export const AssessmentReport = () => {
               >
                 <RadialBar
                   background
-                  clockWise={true}
+                  clockWise
                   dataKey="value"
                   cornerRadius={10}
                   fill="#0A1A2F"
