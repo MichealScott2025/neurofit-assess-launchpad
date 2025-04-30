@@ -81,7 +81,6 @@ export const AssessmentReport = () => {
                 margin={{ top: 10, right: 10, left: 10, bottom: 10 }}
               >
                 <RadialBar
-                  minAngle={15}
                   background
                   clockWise={true}
                   dataKey="value"
