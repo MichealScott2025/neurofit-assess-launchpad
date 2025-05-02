@@ -58,8 +58,8 @@ Assistant:`,
       
       console.log("Request payload:", JSON.stringify(payload, null, 2));
       
-      // Connect to Ollama
-      const response = await fetch("http://localhost:11434/api/generate", {
+      // Connect to Ollama through ngrok
+      const response = await fetch("https://6add-185-76-177-69.ngrok-free.app/api/chat", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
