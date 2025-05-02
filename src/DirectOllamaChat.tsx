@@ -8,19 +8,7 @@ export default function DirectOllamaChat() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [faqKnowledge, setFaqKnowledge] = useState("");
   const messagesEndRef = useRef(null);
-  
-  // Load FAQ knowledge base
-  useEffect(() => {
-    fetch("/neurofit-faq.md")
-      .then(response => response.text())
-      .then(text => {
-        setFaqKnowledge(text);
-        console.log("FAQ Knowledge Base loaded");
-      })
-      .catch(error => console.error("Error loading FAQ:", error));
-  }, []);
   
   // Scroll to bottom when messages change
   useEffect(() => {
@@ -37,28 +25,20 @@ export default function DirectOllamaChat() {
     setErrorMsg("");
     
     try {
-      console.log("Sending message to Ollama using generate endpoint");
+      console.log("Sending message to chat API");
       
-      // Use the generate endpoint with stream: false instead of the chat endpoint
+      // Use the messages format for the API
       const payload = {
         model: "mistral:latest",
-        prompt: `You are an AI assistant for NeuroFit, a platform that provides comprehensive personality, cognitive, and cultural fit assessments to help companies find their perfect candidates.
-
-FAQ KNOWLEDGE BASE:
-${faqKnowledge}
-
-When answering questions, prioritize information from the FAQ Knowledge Base above. Keep your responses brief and focused on directly answering the user's specific question. Don't provide general information unless specifically asked. Limit responses to 1-3 sentences when possible. If the question cannot be answered using the FAQ, use your general knowledge to provide a helpful but concise response.
-
-Chat History:
-${messages.map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`).join('\n')}
-User: ${userMessage.content}
-Assistant:`,
-        stream: false
+        messages: [
+          ...messages,
+          userMessage
+        ]
       };
       
       console.log("Request payload:", JSON.stringify(payload, null, 2));
       
-      // Connect to Ollama through ngrok
+      // Connect to the ngrok tunnel URL that forwards to your FastAPI proxy
       const response = await fetch("https://6add-185-76-177-69.ngrok-free.app/api/chat", {
         method: 'POST',
         headers: {
@@ -72,7 +52,7 @@ Assistant:`,
       }
       
       const data = await response.json();
-      console.log("Generate API response:", data);
+      console.log("API response:", data);
       
       if (data && data.response) {
         // Clean up the response (remove <think> tags if present)
@@ -84,7 +64,7 @@ Assistant:`,
           content: cleanResponse || "I received your message but couldn't generate a response."
         }]);
       } else {
-        throw new Error("Invalid response format: missing response field");
+        throw new Error("Invalid response format");
       }
     } catch (error) {
       console.error("Error sending message:", error);
