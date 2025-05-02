@@ -1,0 +1,1 @@
+document.getElementById('root').innerHTML = '<h1>NeuroFit Assessments</h1><p>Loading...</p>';
