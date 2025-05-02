@@ -1,13 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: './',  // Changed from '/neurofit-assess-launchpad/' to './'
+  base: "./",            // ensures paths are relative
+  build: {
+    outDir: "docs",      // <-- put the build here
+    emptyOutDir: true,   // <-- delete old files each build
+  },
   plugins: [react()],
   resolve: {
     alias: {
-      '@': '/src',
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 });
