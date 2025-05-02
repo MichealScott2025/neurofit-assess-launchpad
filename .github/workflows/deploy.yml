@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Set a branch name to trigger deployment
+      - main
 
 jobs:
   build-and-deploy:
@@ -23,9 +23,21 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: production
 
+      # Debug step - log build output
+      - name: Debug build output
+        run: |
+          echo "Contents of dist directory:"
+          ls -la dist
+          echo "Contents of dist/index.html:"
+          cat dist/index.html
+
+      # This action will create a gh-pages branch and copy the dist folder there
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
+          clean: true
