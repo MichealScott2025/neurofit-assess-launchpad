@@ -1,14 +1,14 @@
+// src/components/FAQAccordion.tsx
 
 import React from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
-export const FAQAccordion = () => {
-  const faqs = [
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export const FAQAccordion: React.FC = () => {
+  const faqs: FAQ[] = [
     {
       question: "How do you customize culture values?",
       answer:
@@ -42,19 +42,17 @@ export const FAQAccordion = () => {
         Frequently Asked Questions
       </h2>
 
-      <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left font-medium text-[#0a1a2f]">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-700">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+      <div className="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq, idx) => (
+          <details key={idx} className="collapse-container">
+            <summary className="font-medium text-[hsl(var(--primary-foreground))]">
+              {faq.question}
+            </summary>
+            <div className="collapse-content">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
       </div>
     </section>
   );

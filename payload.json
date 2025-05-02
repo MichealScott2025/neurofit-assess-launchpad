@@ -1,0 +1,8 @@
+// payload.json
+{
+    "model": "deepseek-r1:latest",
+    "messages": [
+      { "role": "user", "content": "Hi there" }
+    ]
+  }
+  

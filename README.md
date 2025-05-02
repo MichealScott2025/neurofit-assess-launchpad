@@ -1,73 +1,66 @@
-# Welcome to your Lovable project
+# NeuroFit Assessment Platform
 
-## Project info
+A comprehensive platform for personality, cognitive, and cultural fit assessments powered by AI to help companies find their perfect candidates faster and fairer.
 
-**URL**: https://lovable.dev/projects/11148a9f-4f39-4275-bc3c-8afcf581bdfb
+## Features
 
-## How can I edit this code?
+- **AI-Powered Assessment Tools**: Comprehensive evaluations for personality, cognitive abilities, and cultural fit.
+- **Integrated AI Chatbot**: Using Mistral AI for intelligent, context-aware responses about NeuroFit services.
+- **User-Friendly Interface**: Clean, modern design with responsive layout.
+- **Docker Integration**: Easy deployment with containerized services.
 
-There are several ways of editing your application.
+## Technology Stack
 
-**Use Lovable**
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **AI Integration**: Ollama with Mistral model
+- **Containerization**: Docker and Docker Compose
+- **Styling**: Tailwind CSS with custom animations
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/11148a9f-4f39-4275-bc3c-8afcf581bdfb) and start prompting.
+## Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v14 or higher)
+- Docker and Docker Compose
+- Git
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Setup Steps
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+   ```
+   git clone https://github.com/YourUsername/neurofit-assess-launchpad.git
+   cd neurofit-assess-launchpad
+   ```
 
-Follow these steps:
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. Start the Docker containers:
+   ```
+   docker-compose up -d
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. Start the development server:
+   ```
+   npm run dev
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+5. The application should now be running at `http://localhost:5173`
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## AI Chatbot
 
-**Edit a file directly in GitHub**
+The platform includes an integrated AI chatbot powered by Mistral through Ollama:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Direct Chat Widget**: Floating chat interface for quick inquiries
+- **Standalone Chat**: Full-page interface for more in-depth conversations
+- **FAQ Knowledge Base**: Pre-loaded with NeuroFit assessment information
 
-**Use GitHub Codespaces**
+## License
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+[MIT License](LICENSE)
 
-## What technologies are used for this project?
+## Contact
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/11148a9f-4f39-4275-bc3c-8afcf581bdfb) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+For more information, please contact [your-email@example.com]
